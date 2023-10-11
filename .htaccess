@@ -1,0 +1,9 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /proyecto-php/
+# Configuración de la página de error 404 personalizada
+ErrorDocument 404 /proyecto-php/errores/404.php
+
+RewriteRule ^home$ pages/index.php [L]
+RewriteRule ^users$ pages/users.php [L]
+
