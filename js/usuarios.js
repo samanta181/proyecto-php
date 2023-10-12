@@ -95,34 +95,36 @@ function getUsers() {
   });
 }
 
-function registrarUsuario(){
+function registrarUsuario() {
+  var nombre_user = document.getElementById("nombre_user").value;
+  var apellido_paterno = document.getElementById("apellido_paterno").value;
+  var apellido_materno = document.getElementById("apellido_materno").value;
 
-  var nombre_user= document.getElementById("nombre_user").value;
-  var apellido_paterno= document.getElementById("apellido_paterno").value;
-  var apellido_materno= document.getElementById("apellido_materno").value;
-  
-  console.log(nombre_user);
-  console.log(apellido_paterno);
-  console.log(apellido_materno);
   var urlguardar = './api/usuarios/users.php';
   var parametros = {
-    nombre:nombre_user,
-    apeP:apellido_paterno,
-    apeM:apellido_materno
-
-  }
+    nombre: nombre_user,
+    apeP: apellido_paterno,
+    apeM: apellido_materno
+  };
 
   $.ajax({
     url: urlguardar,
     type: "POST",
-    data:parametros,
+    data: parametros,
     beforeSend: function () {
       $('#spinner').css('display', 'block'); // Mostrar el spinner
     },
     success: function (data) {
       $('#spinner').css('display', 'none'); // Mostrar el spinner
-     console.log(data);
-     alert(data);
-    }});
+      limpiarCampos(); // Llamada correcta a la función limpiarCampos
+      console.log(data.mensaje);
+      alert(data.mensaje);
+    }
+  });
+}
 
+function limpiarCampos() {
+  document.getElementById("nombre_user").value = '';
+  document.getElementById("apellido_paterno").value = '';
+  document.getElementById("apellido_materno").value = '';
 }

@@ -63,7 +63,7 @@ function obtenerUsuarios() {
 
 function guardarUsuarios($nombre, $apellido_paterno, $apellido_materno) {
     $conn = conectarDB();
-    $sql = "INSERT INTO users (nombre, apellido_paterno, apellido_materno) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO users (name_user, apep_user, apem_user) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $nombre, $apellido_paterno, $apellido_materno);
     $stmt->execute();
