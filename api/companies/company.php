@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         switch ($action) {
             case "listar":
                 try {
-                    echo json_encode(obtenerUsuarios());
+                    echo json_encode(obtenerEmpresas());
                 } catch (Exception $e) {
                     echo json_encode(["error" => $e->getMessage()]);
                 }
@@ -28,46 +28,21 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     } else {
         echo json_encode(["error" => "Acción no especificada"]);
     }
-} elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Guardar un nuevo usuario en la base de datos
-    $nombre_user = $_POST["nombre"];
-    $apellido_paterno = $_POST["apeP"];
-    $apellido_materno = $_POST["apeM"];
-   
-   
-    try {
-        guardarUsuarios($nombre_user, $apellido_paterno, $apellido_materno);
-        echo json_encode(["mensaje" => "Usuario guardado correctamente"]);
-    } catch (Exception $e) {
-        echo json_encode(["error" => $e->getMessage()]);
-    }
 }
 
-
-
-function obtenerUsuarios() {
+function obtenerEmpresas() {
     $conn = conectarDB();
-    $sql = "SELECT * FROM users";
+    $sql = "SELECT * FROM companies";
     $result = $conn->query($sql);
-    $users = [];
+    $companies = [];
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $users[] = $row;
+            $companies[] = $row;
         }
     }
     
     $conn->close();
-    return $users;
-}
-
-function guardarUsuarios($nombre, $apellido_paterno, $apellido_materno) {
-    $conn = conectarDB();
-    $sql = "INSERT INTO users (nombre, apellido_paterno, apellido_materno) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $nombre, $apellido_paterno, $apellido_materno);
-    $stmt->execute();
-    $stmt->close();
-    $conn->close();
+    return $companies;
 }
 ?>

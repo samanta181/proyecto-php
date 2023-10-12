@@ -63,7 +63,7 @@
     </style>
 
 <body>
-    <table id="userTable" class="table table-hover table-sm">
+    <table id="companyTable" class="table table-hover table-sm">
         
     </table>
 

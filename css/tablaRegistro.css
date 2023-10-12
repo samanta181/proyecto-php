@@ -1,0 +1,19 @@
+form {
+    margin: 30px;
+    
+}
+label{
+    font-weight: bold;
+}
+.row {
+    margin-bottom: 10px;
+}
+.btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: black solid 1px;
+}
+.form-control{
+    width: 80%;
+}

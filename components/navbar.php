@@ -23,6 +23,28 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Empresas
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./listEmpresas"  >Listar Empresas</a></li>
+            <li><a class="dropdown-item" href="./registerEmpresas"  >Registrar Empresas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mascotas
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="./listMascotas">Listar Mascotas</a></li>
+            <li><a class="dropdown-item" href="./registroMascotas"  >Registrar Mascotas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>

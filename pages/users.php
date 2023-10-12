@@ -1,6 +1,6 @@
 <!-- <?php
-require_once('../api/conexion/conexion.php');
-?> -->
+        require_once('../api/conexion/conexion.php');
+        ?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,33 +9,52 @@ require_once('../api/conexion/conexion.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERP-USUARIOS</title>
     <link rel="icon" href="./img/iconovet.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       
+       
+
+        .con {
+            background-color: #d9d9db;
+
+        }
+
+        .na {
+            color: black;
+
+        }
+        .na:hover {
+         color: black; 
+         font-weight: bold;
+        }
+
+       
+    </style>
 </head>
 
 <body>
 
     <?php include('../components/navbar.php') ?>
 
-    <div class="container" style="max-width: 100%;">
+    <?php include('../components/cargador.php') ?>
+
+    <div class="container con" style="max-width: 95%;">
         <ul class="nav nav-tabs" id="myTabs">
             <li class="nav-item">
-                <a class="nav-link" onclick="mostrarTab('datos-personales')">Datos Personales</a>
+                <a class="nav-link na" onclick="mostrarTab('datos-personales')">Datos Personales</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" onclick="mostrarTab('documentos')">Documentos</a>
+                <a class="nav-link na" onclick="mostrarTab('documentos')">Documentos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" onclick="mostrarTab('referencias')">Referencias</a>
+                <a class="nav-link na" onclick="mostrarTab('referencias')">Referencias</a>
             </li>
         </ul>
 
 
-        <div class="tab-content">
+        <div class="tab-content contenedor-form">
             <div id="datos-personales" class="tab-pane fade">
                 <?php include('../components/usuarios/datosPersonales.php') ?>
                 <!-- Contenido de la pestaña Datos Personales -->
@@ -55,7 +74,6 @@ require_once('../api/conexion/conexion.php');
 
     <?php include('../components/footer.php') ?>
     <script type="text/javascript">
-    
         function mostrarTab(tabId) {
             // Ocultar todas las pestañas
             console.log(tabId);
@@ -71,6 +89,7 @@ require_once('../api/conexion/conexion.php');
             }
         }
     </script>
+     <script type="text/javascript" src="js/usuarios.js"></script>
 </body>
 
 </html>
