@@ -4,10 +4,12 @@ RewriteBase /proyecto-php/
 # Configuración de la página de error 404 personalizada
 ErrorDocument 404 /proyecto-php/errores/404.php
 
+RewriteRule ^login$ login.php [L]
 RewriteRule ^home$ pages/index.php [L]
 RewriteRule ^registerUser$ pages/users.php [L]
-RewriteRule ^registerCompanies$ pages/company.php [L]
+RewriteRule ^registroMascotas$ pages/mascotas.php [L]
+RewriteRule ^registerCompanies$ pages/empresas.php [L]
 RewriteRule ^listUsers$ pages/usuarios/listarUsuarios.php [L]
 RewriteRule ^listEmpresas$ pages/company/listarEmpresas.php [L]
 RewriteRule ^listMascotas$ pages/mascotas/listarMascotas.php [L]
-
+RewriteRule ^listPropietarios$ pages/mascotas/listarPropietario.php [L]
