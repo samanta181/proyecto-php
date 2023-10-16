@@ -69,20 +69,42 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     }
 } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Guardar un nuevo usuario en la base de datos
-    $nombre_dueño = $_POST["nombre_dueño"];
-    $apellido_paterno_dueño = $_POST["apellido_paterno_dueño"];
-    $apellido_materno_dueño = $_POST["apellido_materno_dueño"];
-    $dni = $_POST["dni"];
-    $celular = $_POST["celular"];
-    $domicilio = $_POST["domicilio"];
-   
-   
-    try {
-        guardarDueños($nombre_dueño, $apellido_paterno_dueño, $apellido_materno_dueño, $dni, $celular,$domicilio);
-        echo json_encode(["mensaje" => "Propietario guardado correctamente"]);
-    } catch (Exception $e) {
-        echo json_encode(["error" => $e->getMessage()]);
+    $action=$_POST["action"];
+    switch ($action) {
+        case "registrarPropietario":
+            $nombre_dueño = $_POST["nombre_dueño"];
+            $apellido_paterno_dueño = $_POST["apellido_paterno_dueño"];
+            $apellido_materno_dueño = $_POST["apellido_materno_dueño"];
+            $dni = $_POST["dni"];
+            $celular = $_POST["celular"];
+            $domicilio = $_POST["domicilio"];
+           
+           
+            try {
+                guardarDueños($nombre_dueño, $apellido_paterno_dueño, $apellido_materno_dueño, $dni, $celular,$domicilio);
+                echo json_encode(["mensaje" => "Propietario guardado correctamente"]);
+            } catch (Exception $e) {
+                echo json_encode(["error" => $e->getMessage()]);
+            }
+            break;
+       case "registrarMascota":
+                $n_mascota = $_POST["n_mascota"];
+                $m_especie = $_POST["m_especie"];
+                $m_edad = $_POST["m_edad"];
+                $m_sexo = $_POST["m_sexo"];
+                $m_tamaño = $_POST["m_tamaño"];
+                $m_dni_dueño = $_POST["m_dni_dueño"];
+                try {
+                    guardarMascotas($n_mascota, $m_especie, $m_edad, $m_sexo, $m_tamaño, $m_dni_dueño);
+                    echo json_encode(["mensaje" => "Mascota guardado correctamente"]);
+                } catch (Exception $e) {
+                    echo json_encode(["error" => $e->getMessage()]);
+                }
+                break; 
+        default:
+            echo json_encode(["error" => "Acción no válida"]);
     }
+  
 }
 
 
@@ -100,11 +122,11 @@ function guardarDueños($nombre_dueño, $apellido_paterno_dueño, $apellido_mate
 }
 
 
-function guardarMascotas($nombre_dueño, $apellido_paterno_dueño, $apellido_materno_dueño, $dni, $celular, $domicilio) {
+function guardarMascotas($n_mascota, $m_especie, $m_edad, $m_sexo, $m_tamaño, $m_dni_dueño) {
     $conn = conectarDB();
     $sql = "INSERT INTO mascotas (nombre_mascota, sexo, especie, dni_propietario, edad_mascota, tamanio_mascota) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssss", $nombre_dueño, $apellido_paterno_dueño, $apellido_materno_dueño, $dni, $celular, $domicilio);
+    $stmt->bind_param("ssssss", $n_mascota, $m_especie, $m_edad, $m_sexo, $m_tamaño, $m_dni_dueño);
     $stmt->execute();
     $stmt->close();
     $conn->close();

@@ -1,6 +1,11 @@
-<!-- <?php
-        require_once('../api/conexion/conexion.php');
-        ?> -->
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+    $usuario=$_SESSION['user'];
+}else{
+    header('location: ./login');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

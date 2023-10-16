@@ -46,7 +46,7 @@
         </div>
         <div class=" col-md-4 form-group">
             <label for="tamaño">Tamaño:</label>
-            <input type="date" class="form-control" id="tamaño" name="tamaño">
+            <input type="text" class="form-control" id="tamaño" name="tamaño">
         </div>
         <div class="col-md-4">
             <div class="form-group">

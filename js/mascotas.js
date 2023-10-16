@@ -68,6 +68,7 @@ function  registrarPropietario() {
   
     var urlguardar = './api/mascotas/mascotas.php';
     var parametros = {
+      action: 'registrarPropietario',
       nombre_dueño: n_dueño,
       apellido_paterno_dueño: ap_paterno_dueño,
       apellido_materno_dueño: ap_materno_dueño,
@@ -103,6 +104,7 @@ function  registrarPropietario() {
   
     var urlguardar = './api/mascotas/mascotas.php';
     var parametros = {
+      action: 'registrarMascotas',
       n_mascota: n_mascota,
       m_especie: m_especie,
       m_edad: m_edad,

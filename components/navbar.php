@@ -71,14 +71,12 @@
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
-        <?php
-        session_start();
-         if ($_SESSION['user']) {
-        ?>
+       
+       
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               
-            <?php echo $_SESSION['user'];?> 
+            <?php echo $usuario;?> 
               
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -86,7 +84,7 @@
               <a class="dropdown-item" href="./components/logout.php">Cerrar Sesión</a>
             </div>
           </li>
-        <?php  } ?>
+       
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
